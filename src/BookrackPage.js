@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import Bookshelf from "./Bookshelf";
 
 class BookrackPage extends React.Component {
+
   render() {
+    const { shelfs, allBooks } = this.props;
+     
     return(
     <div>
         <div className="list-books">
@@ -11,9 +14,10 @@ class BookrackPage extends React.Component {
             <h1>MyReads</h1>
           </div>
           <div className="list-books-content" />
-          <Bookshelf shelfName="read" />
-          <Bookshelf shelfName="read 2" />
-          <Bookshelf shelfName="read 3" />
+          {shelfs.map((shelf,index) => {
+              const books = allBooks.filter((book) => book.shelf === shelf.shelf)
+              return <Bookshelf key={index} shelf={shelf} books={books}/>
+          })}
         </div>
         <div className="open-search">
           <Link to="/search">Add a book</Link>

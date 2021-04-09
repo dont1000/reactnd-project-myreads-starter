@@ -1,22 +1,14 @@
 import React from 'react'
-import Book from './Book'
+import ListBooks from './ListBooks'
 
 
 const Bookshelf=(props)=>{
 
-    const {shelfName} = props
-
+    const {shelf, books} = props
     return <div className="bookshelf">
-        <h2 className="bookshelf-title">{shelfName}</h2>
+        <h2 className="bookshelf-title">{shelf.head}</h2>
         <div className="bookshelf-books">
-          <ol className="books-grid">
-            <li>
-              <Book />
-            </li>
-            <li>
-              <Book />
-            </li>
-          </ol>
+          <ListBooks books = {books} />
         </div>
       </div>;
   
