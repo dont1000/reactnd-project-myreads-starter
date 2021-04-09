@@ -6,7 +6,14 @@ import BookrackPage from './BookrackPage'
 import {Route} from 'react-router-dom'
 
 class BooksApp extends React.Component {
-  state = {books:[]};
+  state = {
+    books:[],
+    shelfs:[ 
+        {read:"Read"},
+        {wantToRead:"Want to Read"},
+        {currentlyReading:"Currently reading" }
+      ]
+  };
   componentDidMount() {
     BooksAPI.getAll().then((allBooks) => {
       this.setState(() => {
@@ -19,8 +26,7 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         <Route path="/search" exact render={() => <SearchPage />} />
-
-        <Route path="/" exact render={() => <BookrackPage />} />
+        <Route path="/" exact render={() => <BookrackPage shelfs={this.shelfs} allBooks={this.books}/>} />
       </div>
     );
   }
