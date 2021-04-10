@@ -5,7 +5,7 @@ import Bookshelf from "./Bookshelf";
 class BookrackPage extends React.Component {
 
   render() {
-    const { shelfs, allBooks } = this.props;
+    const { shelfs, allBooks, updateBooks } = this.props;
      
     return(
     <div>
@@ -16,7 +16,7 @@ class BookrackPage extends React.Component {
           <div className="list-books-content" />
           {shelfs.map((shelf,index) => {
               const books = allBooks.filter((book) => book.shelf === shelf.shelf)
-              return <Bookshelf key={index} shelf={shelf} books={books}/>
+              return <Bookshelf key={index} shelf={shelf} books={books} updateBooks={updateBooks} />;
           })}
         </div>
         <div className="open-search">

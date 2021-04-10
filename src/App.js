@@ -21,6 +21,17 @@ class BooksApp extends React.Component {
       });
     });
   }
+  updateBooks = (inBook, inShelf) => {
+
+    BooksAPI.update(inBook, inShelf).then(() => {
+      this.setState((prevState) =>({
+        books: prevState.books.map((book)=>{
+         return book.id === inBook.id ? {...book, shelf:inShelf} : book
+         })
+        })) 
+      }
+    )};
+
 
   render() {
     return (
@@ -30,7 +41,11 @@ class BooksApp extends React.Component {
           path="/"
           exact
           render={() => (
-            <BookrackPage shelfs={this.state.shelfs} allBooks={this.state.books} />
+            <BookrackPage
+              updateBooks={this.updateBooks}
+              shelfs={this.state.shelfs}
+              allBooks={this.state.books}
+            />
           )}
         />
       </div>
