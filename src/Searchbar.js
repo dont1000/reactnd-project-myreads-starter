@@ -5,6 +5,7 @@ class Searchbar extends React.Component {
 
   handleChange = (event) => {
     this.setState({ text: event.target.value });
+    this.props.handleChange();
   };
 
   handleKeyPress = (event) => {
