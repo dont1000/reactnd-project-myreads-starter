@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="117px" height="41px" viewBox="0 0 117 41" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-40.000000, -34.000000)">
+        <g id="Group" transform="translate(40.000000, 34.000000)">
+            <path d="M0,1.58974359 C4.0252591,0.52991453 7.59147934,4.79080213e-16 10.6986607,0 C13.8058421,0 16.9062885,0.52991453 20,1.58974359 L20,29.5897436 C17.4477539,28.3418803 14.3763253,27.7179487 10.7857143,27.7179487 C7.19510324,27.7179487 3.59986515,28.3418803 0,29.5897436 L0,1.58974359 Z" id="Rectangle" fill="#F5A623"></path>
+            <path d="M20,1.58974359 C24.0252591,0.52991453 27.5914793,4.79080213e-16 30.6986607,0 C33.8058421,0 36.9062885,0.52991453 40,1.58974359 L40,29.5897436 C37.4477539,28.3418803 34.3763253,27.7179487 30.7857143,27.7179487 C27.1951032,27.7179487 23.5998651,28.3418803 20,29.5897436 L20,1.58974359 Z" id="Rectangle" fill="#F5A623"></path>
+            <text id="MyRead" font-family="PTMono-Bold, PT Mono" font-size="24" font-weight="bold" fill="#000B14">
+                <tspan x="30" y="36">MyRead</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

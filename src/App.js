@@ -9,9 +9,9 @@ class BooksApp extends React.Component {
   state = {
     books: [],
     shelfs: [
-      { shelf: "read", head: "Read" },
-      { shelf: "wantToRead", head: "Want to Read" },
       { shelf: "currentlyReading", head: "Currently reading" },
+      { shelf: "wantToRead", head: "Want to Read" },
+      { shelf: "read", head: "Read" },
     ],
   };
   componentDidMount() {
@@ -22,22 +22,42 @@ class BooksApp extends React.Component {
     });
   }
   updateBooks = (inBook, inShelf) => {
-
     BooksAPI.update(inBook, inShelf).then(() => {
-      this.setState((prevState) =>({
-        books: prevState.books.map((book)=>{
-         return book.id === inBook.id ? {...book, shelf:inShelf} : book
-         })
-        })) 
-      }
-    )};
-  
+      this.setState((prevState) => ({
+        books: prevState.books.map((book) => {
+          return book.id === inBook.id ? { ...book, shelf: inShelf } : book;
+        }),
+      }));
+    });
+  };
 
   render() {
-    return <div className="app">
-        <Route path="/search" exact render={() => <SearchPage allBooks={this.state.books} updateBooks={this.updateBooks} />} />
-        <Route path="/" exact render={() => <BookrackPage updateBooks={this.updateBooks} shelfs={this.state.shelfs} allBooks={this.state.books} />} />
-      </div>;
+    return (
+      <div className="app">
+       
+        <Route
+          path="/search"
+          exact
+          render={() => (
+            <SearchPage
+              allBooks={this.state.books}
+              updateBooks={this.updateBooks}
+            />
+          )}
+        />
+        <Route
+          path="/"
+          exact
+          render={() => (
+            <BookrackPage
+              updateBooks={this.updateBooks}
+              shelfs={this.state.shelfs}
+              allBooks={this.state.books}
+            />
+          )}
+        />
+      </div>
+    );
   }
 }
 

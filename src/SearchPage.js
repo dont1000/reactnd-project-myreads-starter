@@ -9,7 +9,7 @@ class SearchPage extends React.Component {
     searchedBooks: [],
     msg: "",
   };
-  noBookMsg = "No Book found, please try again";
+  noBookMsg = "No books found, please try again";
 
   emptyMessage = () => {
     this.setState({ msg: "" });
