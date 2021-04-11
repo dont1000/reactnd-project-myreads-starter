@@ -1,7 +1,7 @@
 import React from 'react'
 
 const ShelfChanger =(props) => (
-      <select value={props.shelf} onChange={props.handleOnChange}>
+      <select value={props.shelf||'none'} onChange={props.handleOnChange}>
         <option value="move" disabled>
           Move to...
         </option>
