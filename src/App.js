@@ -31,25 +31,13 @@ class BooksApp extends React.Component {
         })) 
       }
     )};
-
+  
 
   render() {
-    return (
-      <div className="app">
-        <Route path="/search" exact render={() => <SearchPage />} />
-        <Route
-          path="/"
-          exact
-          render={() => (
-            <BookrackPage
-              updateBooks={this.updateBooks}
-              shelfs={this.state.shelfs}
-              allBooks={this.state.books}
-            />
-          )}
-        />
-      </div>
-    );
+    return <div className="app">
+        <Route path="/search" exact render={() => <SearchPage allBooks={this.state.books} updateBooks={this.updateBooks} />} />
+        <Route path="/" exact render={() => <BookrackPage updateBooks={this.updateBooks} shelfs={this.state.shelfs} allBooks={this.state.books} />} />
+      </div>;
   }
 }
 

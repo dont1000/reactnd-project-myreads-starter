@@ -1,32 +1,46 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import Searchbar from './Searchbar'
+import ListBooks from './ListBooks'
+import * as BooksAPI from "./BooksAPI";
 
-class SearchPage extends React.Component{
+class SearchPage extends React.Component {
+  state = {
+    searchedBooks: []
+  };
 
-    render(){
-      return(
-        <div className="search-books">
-          <div className="search-books-bar">
-            <Link className="close-search" to='/'>Close</Link>
-            <div className="search-books-input-wrapper">
-              {/*
-                NOTES: The search from BooksAPI is limited to a particular set of search terms.
-                You can find these search terms here:
-                https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
+  searchBook = (query) => {
+ 
+      BooksAPI.search(query).then((res) => {
+        if(!res.length){ return}
+        const searchResultIds = res.map((book) => book.id);
+        const searchResultBooks = this.props.allBooks.filter(
+            (book) => {
+              return searchResultIds.includes(book.id);
+            }
+          );
+          this.setState({ searchedBooks: searchResultBooks });
+       
+      });
+  };
 
-                However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
-                you don't find a specific author or title. Every search is limited by search terms.
-              */}
-              <input type="text" placeholder="Search by title or author"/>
-
-            </div>
-          </div>
-          <div className="search-books-results">
-            <ol className="books-grid"></ol>
+  render() {
+    return <div className="search-books">
+        <div className="search-books-bar">
+          <Link className="close-search" to="/">
+            Close
+          </Link>
+          <div className="search-books-input-wrapper">
+            <Searchbar handleTextInput={this.searchBook} />
           </div>
         </div>
-      )
-    }
+
+        <div className="search-books-results">
+          <ListBooks books={this.state.searchedBooks} updateBooks={this.props.updateBooks} />
+        </div>
+        <div> {this.state.errorMsg} </div>
+      </div>;
+  }
 }
 
 export default SearchPage
