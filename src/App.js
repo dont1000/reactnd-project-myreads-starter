@@ -15,12 +15,31 @@ class BooksApp extends React.Component {
     ],
   };
   componentDidMount() {
-    BooksAPI.getAll().then((allBooks) => {
-      this.setState(() => {
-        return { books: allBooks };
-      });
-    });
+    this.loadAllBooks();
   }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (JSON.stringify(prevState.books) !== JSON.stringify(this.state.books)) {
+      this.loadAllBooks();
+    }
+  }
+
+  handleBookChanges = (inBook, inShelf) => {
+    if (this.state.books.some((book) => book.id === inBook.id)) {
+      this.updateBooks(inBook, inShelf);
+    } else {
+      this.addBook(inBook, inShelf);
+    }
+  };
+
+  addBook = (inBook, inShelf) => {
+    BooksAPI.update(inBook, inShelf).then(() => {
+      this.setState((currentState) => ({
+        books: [...currentState.books, inBook],
+      }));
+    });
+  };
+
   updateBooks = (inBook, inShelf) => {
     BooksAPI.update(inBook, inShelf).then(() => {
       this.setState((prevState) => ({
@@ -31,17 +50,24 @@ class BooksApp extends React.Component {
     });
   };
 
+  loadAllBooks = () => {
+    BooksAPI.getAll().then((allBooks) => {
+      this.setState(() => {
+        return { books: allBooks };
+      });
+    });
+  };
+
   render() {
     return (
       <div className="app">
-       
         <Route
           path="/search"
           exact
           render={() => (
             <SearchPage
               allBooks={this.state.books}
-              updateBooks={this.updateBooks}
+              updateBooks={this.handleBookChanges}
             />
           )}
         />
@@ -50,7 +76,7 @@ class BooksApp extends React.Component {
           exact
           render={() => (
             <BookrackPage
-              updateBooks={this.updateBooks}
+              updateBooks={this.handleBookChanges}
               shelfs={this.state.shelfs}
               allBooks={this.state.books}
             />
