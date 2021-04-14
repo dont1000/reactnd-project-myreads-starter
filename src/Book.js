@@ -2,12 +2,10 @@ import React from 'react'
 import ShelfChanger from './ShelfChanger'
 
 
-
-
 const Book=(props)=>{
     const { book, updateBooks } = props;
-    const handleOnChange = (event) => {
-        updateBooks(book, event.target.value);
+    const handleOnChange = (shelf) => {
+        updateBooks(book, shelf);
     };
    
 return (
@@ -22,11 +20,14 @@ return (
         }}
       />
       <div className="book-shelf-changer">
+        
         <ShelfChanger shelf={book.shelf} handleOnChange={handleOnChange} />
       </div>
     </div>
-    <div className="book-title">{book.title||''}</div>
-    <div className="book-authors">{(book.authors && book.authors.join(", ")) || ''}</div>
+    <div className="book-title">{book.title || ""}</div>
+    <div className="book-authors">
+      {(book.authors && book.authors.join(", ")) || ""}
+    </div>
   </div>
 );
 }
