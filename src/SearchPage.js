@@ -17,21 +17,18 @@ class SearchPage extends React.Component {
   };
 
   reset = () => {
-    this.setState({ searchedBooks: [], isLoading: true });
+    this.setState({ searchedBooks: [] });
   };
 
   
 
   searchBook = (query) => {
+    this.setState({isLoading: true });
     BooksAPI.search(query).then((resultBooks) => {
-      if (!resultBooks.length) {
-        this.setState({
-          msg: this.noBookMsg,
-          isLoading: false,
-        });
+      if (resultBooks.error) {
+        this.setState({ msg: this.noBookMsg, isLoading: false });
         return;
       }
-
       const allBookIds = this.props.allBooks.map((book) => book.id);
       resultBooks.forEach((book) => {
         if (allBookIds.includes(book.id)) {
@@ -42,16 +39,14 @@ class SearchPage extends React.Component {
         }
       });
 
-      this.setState({
-        searchedBooks: resultBooks,
-        isLoading: false,
-      });
+      this.setState({ searchedBooks: resultBooks, isLoading: false });
     });
   };
 
   search = (query) => {
     this.reset();
-    this.searchBook(query);
+    query!=='' && this.searchBook(query);
+  
   };
 
   render() {
