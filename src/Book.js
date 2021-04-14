@@ -16,15 +16,17 @@ return (
         style={{
           width: 128,
           height: 193,
-          backgroundImage: `url(${book.imageLinks.smallThumbnail})`,
+          backgroundImage:
+            book.imageLinks && book.imageLinks.smallThumbnail
+              ? `url(${book.imageLinks.smallThumbnail})`
+              : `url('./img/cover-default.svg')`,
         }}
       />
       <div className="book-shelf-changer">
-        
         <ShelfChanger shelf={book.shelf} handleOnChange={handleOnChange} />
       </div>
     </div>
-    <div className="book-title">{book.title || ""}</div>
+    <div className="book-title">{book.title || "Title not available"}</div>
     <div className="book-authors">
       {(book.authors && book.authors.join(", ")) || ""}
     </div>
