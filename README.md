@@ -24,7 +24,11 @@ The backend API uses a fixed set of cached search results and is limited to a pa
 
 ## Screen Shots
 
+### Screenshot 1
+
 ![alt text](https://raw.githubusercontent.com/dont1000/reactnd-project-myreads-starter/master/docs/image/screenshot1.jpg "main page")
+
+### Screenshot 2
 
 ![alt text](https://raw.githubusercontent.com/dont1000/reactnd-project-myreads-starter/master/docs/image/screenshot2.jpg "searchpage page")
 
