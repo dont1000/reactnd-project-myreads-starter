@@ -1,27 +1,20 @@
 import React from 'react'
 
 class Searchbar extends React.Component {
-  state = { text: "" };
+  state = { query: "" };
 
-  handleChange = (event) => {
-    this.setState({ text: event.target.value });
-    this.props.handleChange();
+  handleChange = (query) => {
+    this.setState({ query: query });
+    this.props.handleInputQuery(query);
   };
-
-  handleKeyPress = (event) => {
-    if (event.key === 'Enter'){
-        this.props.handleTextInput(this.state.text);
-    }
-  }
 
   render() {
     return (
       <input
         type="text"
         placeholder="Search by title or author"
-        value={this.state.text}
-        onChange={this.handleChange}
-        onKeyPress={this.handleKeyPress}
+        value={this.state.query}
+        onChange={(event) => this.handleChange(event.target.value)}
       />
     );
   }
