@@ -12,15 +12,11 @@ class SearchPage extends React.Component {
   };
   noBookMsg = "No books found, please try again";
 
-  emptyMessage = () => {
-    this.setState({ msg: "" });
-  };
 
   reset = () => {
     this.setState({ searchedBooks: [], msg:'' });
   };
 
-  
 
   searchBook = (query) => {
     this.setState({isLoading: true });
@@ -52,10 +48,7 @@ class SearchPage extends React.Component {
   };
 
   search = (query) => {
-    console.log("handleText", query)
-
-    //this.reset();
-    query===''?this.reset() : this.searchBook(query);
+    query==='' ? this.reset() : this.searchBook(query);
   
   };
 
@@ -66,7 +59,7 @@ class SearchPage extends React.Component {
             Close
           </Link>
           <div className="search-books-input-wrapper">
-            <Searchbar handleInputQuery={this.search} handleChange={this.emptyMessage} />
+            <Searchbar handleInputQuery={this.search} />
           </div>
         </div>
         <div className="search-books-msg">{this.state.msg}</div>
