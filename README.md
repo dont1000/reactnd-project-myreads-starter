@@ -7,7 +7,9 @@ The MyReads project, is a bookshelf app that allows you to select and categorize
 * Clone the repository and install the dependencies 
 
 `$ git clone https://github.com/dont1000/reactnd-project-myreads-starter.git`
+
 `$ cd reactnd-project-myreads`
+
 `$ npm install`
 
 
@@ -22,8 +24,8 @@ The backend API uses a fixed set of cached search results and is limited to a pa
 
 ## Screen Shots
 
-![alt text](https://github.com/dont1000/reactnd-project-myreads/blob/master/docs/assets/images/screenshot1.jpg "main page")
+![alt text](https://raw.githubusercontent.com/dont1000/reactnd-project-myreads-starter/master/docs/image/screenshot1.jpg "main page")
 
-![alt text](https://github.com/dont1000/reactnd-project-myreads/blob/master/docs/assets/images/screenshot2.jpg "searchpage page")
+![alt text](https://raw.githubusercontent.com/dont1000/reactnd-project-myreads-starter/master/docs/image/screenshot1.jpg "searchpage page")
 
 
